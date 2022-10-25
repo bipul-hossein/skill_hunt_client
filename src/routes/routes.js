@@ -12,6 +12,7 @@ const routes = createBrowserRouter([
         {
           path: "/",
           element: <Home/>,
+          loader: ()=>fetch("https://assignment10-server-bipul-hossein.vercel.app/products")
         },
         {
           path: "/login",
