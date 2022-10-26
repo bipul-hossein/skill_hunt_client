@@ -5,6 +5,7 @@ import Footer from '../components/footer/Footer';
 import NavBar from '../components/navBar/NavBar';
 import RightSideCom from '../components/Home/RightSideCom';
 
+
 const Main = () => {
     return (
         <div>
@@ -18,7 +19,7 @@ const Main = () => {
                     <RightSideCom />
                 </div>
             </div>
-            
+
             <Footer />
         </div>
     );
