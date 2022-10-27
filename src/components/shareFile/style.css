@@ -1,3 +1,21 @@
 #backgrond{
     background-color:#e0d6d6;
 }
+
+#mt{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    
+}
+
+#container{
+    display: grid;
+    grid-template-columns: 5fr 2fr;
+    gap: 5px;
+}
+
+#bgColor{
+    background-color: #78809d;
+    color: white;
+    margin-right: 5px;
+}

@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/UserContext';
 import { FaGoogle, FaGithub } from "react-icons/fa"
 import { GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth';
+import "../shareFile/style.css"
 
 const Login = () => {
 
@@ -62,10 +63,11 @@ const Login = () => {
     }
 
     return (
-        <div className="">
+        <div id="backgrond" >
+            <div id="mt"className="mt-8">
             <div className="card w-96 bg-base-100 shadow-xl mx-auto mt-8">
                 <div className='mx-auto my-8'>
-                    <h1>Please Login!!</h1>
+                    <h1 className="text-2xl font-bold">Please Login!!</h1>
                     <form onSubmit={handleSubmit} className=''>
                         <div className="form-control">
                             <label className="label">
@@ -97,6 +99,7 @@ const Login = () => {
                 </div>
             </div>
 
+            </div>
         </div>
     );
 };

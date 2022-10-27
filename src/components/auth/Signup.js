@@ -1,4 +1,4 @@
-
+import "../shareFile/style.css"
 import React, { useState } from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
@@ -55,10 +55,12 @@ const Signup = () => {
 
 
     return (
-        <div className="">
-            <div className="card w-96 bg-base-100 shadow-xl mx-auto mt-8">
+        <div id="backgrond" className="">
+            <div id="mt" className="mt-8">
+
+            <div  className="card w-96 bg-base-100 shadow-xl mx-auto mt-8">
                 <div className='mx-auto my-8'>
-                    <h1>Please SignUp!!</h1>
+                    <h1 className="text-2xl font-bold">Please SignUp!!</h1>
                     <form onSubmit={handleSubmit} className=''>
                         <div className="form-control">
                             <label className="label">
@@ -110,6 +112,7 @@ const Signup = () => {
                     <p>Already Have an Account !! Please <Link className='text-amber-400' to='/login'>Login</Link></p>
                     <p className='text-error'>{error}</p>
                 </div>
+            </div>
             </div>
 
         </div>
