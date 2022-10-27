@@ -12,6 +12,8 @@
     display: grid;
     grid-template-columns: 5fr 2fr;
     gap: 5px;
+  
+   padding-right: 2%;
 }
 
 #bgColor{

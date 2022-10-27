@@ -25,7 +25,7 @@ const Courses = () => {
         <div id='container' >
             
             <div id="backgrond">
-                <div className='grid md:grid-cols-3 gap-4 pt-8'>
+                <div className='grid md:grid-cols-3 gap-4 pt-8 ml-5'>
                     {
                         signData.map(everyData => <SingleCard key={everyData.id}
                             info={everyData}
