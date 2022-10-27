@@ -11,7 +11,9 @@ const firebaseConfig = {
   storageBucket: "education-site-assign.appspot.com",
   messagingSenderId: "993673926500",
   appId: "1:993673926500:web:f8bd8a2c7475f009484c71"
-};
+
+
+}
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

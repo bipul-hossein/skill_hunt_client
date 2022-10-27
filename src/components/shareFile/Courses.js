@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SingleCard from './SingleCard';
-
+import "./style.css"
 
 
 const Courses = () => {
@@ -21,7 +21,7 @@ const Courses = () => {
     }
 
     return (
-        <div className='grid md:grid-cols-3 gap-4'>
+        <div id="backgrond" className='grid md:grid-cols-3 gap-4 pt-8'>
         {
             signData.map(everyData=><SingleCard key={everyData.id}
                  info={everyData}
