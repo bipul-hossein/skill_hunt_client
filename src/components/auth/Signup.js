@@ -7,11 +7,13 @@ import { AuthContext } from '../../contexts/AuthProvider/UserContext';
 
 const Signup = () => {
     const [error, setError] = useState(null);
-    const { createUser } = useContext(AuthContext)
-   
+    const { createUser, updateUserProfile } = useContext(AuthContext)
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
+        const name = form.name.value;
+        const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
         const confirm = form.confirm.value;
@@ -31,16 +33,51 @@ const Signup = () => {
                 const user = result.user;
                 console.log(user)
                 form.reset()
+                handleUpdateUserProfile(name, photoURL)
             })
             .catch(error => console.error(error))
 
     }
+
+
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+
+        }
+
+        updateUserProfile(profile)
+        .then(() => { })
+        .catch(error => console.error(error))
+
+    }
+
+
     return (
         <div className="">
             <div className="card w-96 bg-base-100 shadow-xl mx-auto mt-8">
                 <div className='mx-auto my-8'>
                     <h1>Please SignUp!!</h1>
                     <form onSubmit={handleSubmit} className=''>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Your Full Name</span>
+                            </label>
+
+                            <input type="text" placeholder="Input Your Name" className="input input-bordered"
+                                name='name' />
+
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Your Photo URL</span>
+                            </label>
+
+                            <input type="text" placeholder="photo URL" className="input input-bordered"
+                                name='photoURL' />
+
+                        </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Your Email</span>

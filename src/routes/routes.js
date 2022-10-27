@@ -5,6 +5,7 @@ import Home from "../components/Home/Home";
 import Blog from "../components/pages/blog/Blog";
 import Course from "../components/pages/course/Course";
 import FAQ from "../components/pages/FAQ/FAQ";
+import ContentDetails from "../components/shareFile/ContentDetails";
 import CourseDetails from "../components/shareFile/CourseDetails";
 import Error from "../components/shareFile/Error";
 import Main from "../root/Main";
@@ -30,13 +31,18 @@ const routes = createBrowserRouter([
         loader: ({ params }) => fetch(`https://assignment10-server-bipul-hossein.vercel.app/course/${params.id}`)
       },
       {
+        path: '/course/:id/details',
+        element: <PrivateRoute><ContentDetails></ContentDetails></PrivateRoute>,
+        loader: ({ params }) => fetch(`https://assignment10-server-bipul-hossein.vercel.app/course/${params.id}/details`)
+      },
+      {
         path: '/fag',
         element: <FAQ />
 
       },
       {
         path: '/blog',
-        element:<PrivateRoute><Blog /></PrivateRoute>
+        element:<Blog />
 
       },
       {

@@ -4,14 +4,49 @@ import { FaUser } from "react-icons/fa"
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/UserContext';
 import { FaLaptopCode } from "react-icons/fa"
-
+import "./DarkMode.css"
 const NavBar = () => {
 
     const { user, logOut } = useContext(AuthContext)
     console.log(user)
+
+
+
+    let clickedClass = "clicked";
+    const body = document.body;
+    const lightTheme = "light";
+    const darkTheme = "dark";
+    let theme;
+
+    if (localStorage) {
+        theme = localStorage.getItem("theme");
+    }
+
+    if (theme === lightTheme || theme === darkTheme) {
+        body.classList.add(theme);
+    } else {
+        body.classList.add(lightTheme);
+    }
+
+    const switchTheme = (e) => {
+        if (theme === darkTheme) {
+            body.classList.replace(darkTheme, lightTheme);
+            e.target.classList.remove(clickedClass);
+            localStorage.setItem("theme", "light");
+            theme = lightTheme;
+        } else {
+            body.classList.replace(lightTheme, darkTheme);
+            e.target.classList.add(clickedClass);
+            localStorage.setItem("theme", "dark");
+            theme = darkTheme;
+        }
+    };
+
+
+
+
     return (
         <div>
-
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -33,44 +68,41 @@ const NavBar = () => {
                             <li><Link to='/blog'>Blog</Link></li>
                             <li><Link to='/about'>About</Link></li>
 
+
                         </ul>
-                        <div className=" hidden lg:flex">
-                            <ul className="menu menu-normal">
-                                <li tabIndex={0}>
-                                    <label tabIndex={0} className="btn btn-circle avatar ">
-                                        <div className=" rounded-full">
-                                            <img src="https://placeimg.com/80/80/people" />
-                                        </div>
-                                    </label>
-                                    <ul className="">
-                                        <li><a>{user?.displayName}</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                     
                     </div>
                 </div>
                 <div className="navbar-end">
 
-                    <div className='mr-4'>
-                        {
-                            user?.uid ?
-                                <>
-                                    <button onClick={logOut}>Log Out</button>
-                                    <p className='mx-4'>{user?.displayName}</p>
-                                    <p className='mx-4'>{user?.photoURL ? <img src="user.photoURL"></img> : <FaUser />}</p>
+                    <div className='flex flex-row items-center mx-4'>
+                        <div className='mr-2'>
+                            {user?.photoURL ?
 
-                                </>
-                                :
-                                <>
+                                <div className="tooltip tooltip-secondary tooltip-left" data-tip={user?.displayName}>
+                                    <img src={user?.photoURL} style={{ width: '30px' }} className=" rounded-full" />
+                                </div>
+
+                                : <FaUser></FaUser>}
+                        </div>
+
+                        <div className=''>
+                            {
+                                user?.uid ?
+                                    <button onClick={logOut}>Log Out</button>
+                                    :
                                     <Link className='mx-4' to='/login'>Login</Link>
-                                    <Link to='/signup'>Sign Up</Link>
-                                </>
-                        }
+
+                            }
+                        </div>
                     </div>
 
-
+                    <div className='hidden md:inline' >
+                        <button
+                            className={theme === "dark" ? clickedClass : ""}
+                            id="darkMode"
+                            onClick={(e) => switchTheme(e)}
+                        ></button>
+                    </div>
 
                 </div>
             </div>
